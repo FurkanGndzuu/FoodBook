@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/food_graph"
+    app:startDestination="@id/foodList">
+
+    <fragment
+        android:id="@+id/foodList"
+        android:name="com.frkn.foodsbook.view.FoodList"
+        android:label="FoodList" >
+        <action
+            android:id="@+id/action_foodList_to_foodDetails"
+            app:destination="@id/foodDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodDetails"
+        android:name="com.frkn.foodsbook.view.FoodDetails"
+        android:label="FoodDetails" >
+        <action
+            android:id="@+id/action_foodDetails_to_foodList"
+            app:destination="@id/foodList" />
+        <argument
+            android:name="FoodId"
+            app:argType="integer" />
+    </fragment>
+</navigation>
