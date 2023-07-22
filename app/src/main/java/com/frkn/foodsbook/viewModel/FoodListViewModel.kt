@@ -15,7 +15,7 @@ class FoodListViewModel : ViewModel() {
         val b : Food = Food("1" , "1","1" , "1","1" , "1" )
         val c : Food = Food("1" , "1","1" , "1","1" , "1" )
 
-        var FoodListRefresData = arrayListOf<Food>(a , b ,c)
+        var FoodListRefresData = arrayListOf(a , b ,c)
         Foods.value = FoodListRefresData
         FoodsErrorMessage.value = false
         FoodsIsUploading.value = false

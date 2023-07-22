@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -50,9 +51,8 @@ class FoodList : Fragment() {
 
         foodLisViewModel.Foods.observe(viewLifecycleOwner , Observer {
             it?.let {
-                view?.findViewById<RecyclerView>(R.id.FoodListRecylerView)?.visibility = View.VISIBLE
                 recyclerView.UpdateFoodList(it)
-            }
+                view?.findViewById<RecyclerView>(R.id.FoodListRecylerView)?.visibility = View.VISIBLE }
         })
 
         foodLisViewModel.FoodsErrorMessage.observe(viewLifecycleOwner , Observer {
@@ -70,12 +70,12 @@ class FoodList : Fragment() {
         foodLisViewModel.FoodsIsUploading.observe(viewLifecycleOwner , Observer {
             it?.let{ b ->
                 if(b){
-                    view?.findViewById<TextView>(R.id.FoodListPageProgressBar)?.visibility = View.VISIBLE
+                    view?.findViewById<ProgressBar>(R.id.FoodListPageProgressBar)?.visibility = View.VISIBLE
                     view?.findViewById<RecyclerView>(R.id.FoodListRecylerView)?.visibility = View.GONE
                     view?.findViewById<TextView>(R.id.foodListPageErrorMessageText)?.visibility = View.GONE
                 }
                 else{
-                    view?.findViewById<TextView>(R.id.FoodListPageProgressBar)?.visibility = View.GONE
+                    view?.findViewById<ProgressBar>(R.id.FoodListPageProgressBar)?.visibility = View.GONE
                 }
             }
         })

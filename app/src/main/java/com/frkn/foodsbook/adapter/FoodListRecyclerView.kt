@@ -9,10 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.frkn.foodsbook.R
 import com.frkn.foodsbook.model.Food
 import com.frkn.foodsbook.view.FoodDetailsDirections
+import com.frkn.foodsbook.view.FoodListDirections
 import java.util.zip.Inflater
 
 class FoodListRecyclerView(val FoodList : ArrayList<Food>) : RecyclerView.Adapter<FoodListRecyclerView.FoodListHolder>() {
-    class FoodListHolder(view : View) : RecyclerView.ViewHolder(view){
+    class FoodListHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
     }
 
@@ -27,10 +28,10 @@ class FoodListRecyclerView(val FoodList : ArrayList<Food>) : RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: FoodListHolder, position: Int) {
-        holder.itemView.findViewById<TextView>(R.id.name).text = FoodList.get(position).name
-        holder.itemView.findViewById<TextView>(R.id.kcal).text = FoodList.get(position).kcal
+        holder.itemView.findViewById<TextView>(R.id.name).text = FoodList[position].name
+        holder.itemView.findViewById<TextView>(R.id.kcal).text = FoodList[position].kcal
         holder.itemView.setOnClickListener {
-            var action = FoodDetailsDirections.actionFoodDetailsToFoodList()
+            var action = FoodListDirections.actionFoodListToFoodDetails(45)
             Navigation.findNavController(it).navigate(action)
         }
     }
@@ -38,6 +39,6 @@ class FoodListRecyclerView(val FoodList : ArrayList<Food>) : RecyclerView.Adapte
     fun UpdateFoodList(newFoodList: List<Food>){
         FoodList.clear()
         FoodList.addAll(newFoodList)
-        notifyDataSetChanged()
+       notifyDataSetChanged()
     }
 }
