@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.frkn.foodsbook.R
 import com.frkn.foodsbook.adapter.FoodListRecyclerView
 import com.frkn.foodsbook.viewModel.FoodListViewModel
@@ -45,6 +46,15 @@ class FoodList : Fragment() {
         view.findViewById<RecyclerView>(R.id.FoodListRecylerView).adapter = recyclerView
 
         observeLiveData()
+
+        view.findViewById<SwipeRefreshLayout>(R.id.swipeRefresLayout).setOnRefreshListener {
+            view?.findViewById<ProgressBar>(R.id.FoodListPageProgressBar)?.visibility = View.VISIBLE
+            view?.findViewById<RecyclerView>(R.id.FoodListRecylerView)?.visibility = View.GONE
+            view?.findViewById<TextView>(R.id.foodListPageErrorMessageText)?.visibility = View.GONE
+
+            view.findViewById<SwipeRefreshLayout>(R.id.swipeRefresLayout).isRefreshing = false
+            foodLisViewModel.refreshData()
+        }
     }
 
     fun observeLiveData(){
