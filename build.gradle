@@ -8,5 +8,7 @@ plugins {
 
     id 'androidx.navigation.safeargs' version '2.5.2' apply false
 
+
+
 }
 

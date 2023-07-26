@@ -1,8 +1,10 @@
 package com.frkn.foodsbook.util
 
 import android.content.Context
+import android.provider.MediaStore.Images
 import android.widget.ImageView
 import androidx.constraintlayout.widget.Placeholder
+import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -22,4 +24,9 @@ fun placeHolder(context : Context) : CircularProgressDrawable{
         centerRadius = 40f
         start()
     }
+}
+
+@BindingAdapter("android:dowlandImage")
+fun dowlandImage(view : ImageView , url : String?){
+    view.UploadImage(url , CircularProgressDrawable(view.context))
 }

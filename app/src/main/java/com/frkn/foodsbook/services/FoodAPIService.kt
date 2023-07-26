@@ -20,9 +20,9 @@ class FoodAPIService {
         .create(FoodAPI::class.java)
 
     @GET("atilsamancioglu/BTK20-JSONVeriSeti/master/besinler.json")
-   fun getDatas() : Single<List<Food>> {
-    val foods : Single<List<Food>> =   api.getFoods()
+    fun getDatas(): Single<List<Food>> {
+        val foods: Single<List<Food>> = api.getFoods()
         return foods;
-   }
+    }
 
 }
